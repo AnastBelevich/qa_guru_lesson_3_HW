@@ -4,6 +4,8 @@ from selene import browser, be, by, have
 @pytest.fixture
 def open_browser():
     browser.open('https://duckduckgo.com/')
+    browser.driver.set_window_size(1920, 1080)  # ✅ Ширина 1920px, высота 1080px
+    # или browser.driver.maximize_window()  # Полноэкранный режим [[1]]
 
 def test_successful_search(open_browser):
     browser.element('#searchbox_input').should(be.blank).type('qa.guru').press_enter()
